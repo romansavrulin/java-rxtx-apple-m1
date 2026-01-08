@@ -32,3 +32,4 @@ config.sub
 configure
 ltconfig
 ltmain.sh
+m4/
