@@ -39,8 +39,7 @@ CLASSES = $(patsubst $(SPATH)/%.java,$(TOP)/$(CLASSDEST)/%.class,$(wildcard $(SP
 javafiles = $(wildcard $(SPATH)/*.java)
 javahfiles = $(patsubst $(SPATH)/%.java,%,$(wildcard $(SPATH)/*.java))
 #######################
-CLEANFILES = $(TOP)/*.class $(TOP)/$(CLASSDEST)/*.class $(TOP)/$(JARTARGET) $(TOP)/Makefile.in \
-	$(TOP)/aclocal.m4 $(TOP)/config.h.in $(TOP)/configure $(TOP)/compile $(TOP)/ltmain.sh
+CLEANFILES = $(TOP)/*.class $(TOP)/$(CLASSDEST)/*.class $(TOP)/$(JARTARGET)
 
 # for SCO builds everything else is currently using lib%.la below
 # I'm thinking about taking libtool out completely.  See also Mac OS X builds.
@@ -91,11 +90,23 @@ install: all
 	done` $(RXTX_PATH)
 	$(INSTALL_PROGRAM) $(JARTARGET) $(JHOME)/
 
+uninstall:
+	rm -f "$(RXTX_PATH)/librxtxSerial.jnilib"
+	rm -f "$(JHOME)/$(JARTARGET)"
+
 clean-generic:
 	rm -rf $(DEST) $(TOP)/$(CLASSTOP)
+	-test -z "$(CLEANFILES)" || rm -f $(CLEANFILES)
+
+distclean:
 	rm -rf $(TOP)/autom4te.cache
 	rm -rf $(TOP)/m4
-	-test -z "$(CLEANFILES)" || rm -f $(CLEANFILES)
+	rm -rf $(TOP)/Makefile.in
+	rm -rf $(TOP)/aclocal.m4
+	rm -rf $(TOP)/config.h.in
+	rm -rf $(TOP)/configure
+	rm -rf $(TOP)/compile
+	rm -rf $(TOP)/ltmain.sh
 
 all: $(TARGETLIB)
 

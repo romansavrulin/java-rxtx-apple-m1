@@ -85,6 +85,9 @@ TOP="`pwd`"
 GLIBTOOL="\$(SHELL) \$(TOP)/libtool"
 LINK="\$(GLIBTOOL) --mode=link \$(CC) \$(CFLAGS) \$(LDFLAGS) -release \$(VERSION) -o librxtx\$*.la -rpath \$(RXTX_PATH)"
 
+
+echo "Host os is $host_os"
+
 [case "$host_os" in
 	*-gnu)
 	CFLAGS=$CFLAGS" -D_POSIX_SOURCE";;
@@ -456,6 +459,8 @@ fi
 
 #  http://www.tolstoy.com/samizdat/sysprops.html
 
+echo "OS_NAME is $OS_NAME"
+
 [ case $OS_NAME in 
 Linux)
 	LDFLAGS=$LDFLAGS" -lpthread"
@@ -703,8 +708,11 @@ Mac\ OS\ X)
 	OBJECT_EXTENSION="o"
 	LIB_EXTENSION="jnilib"
 	TARGETLIB="\$(target_triplet)/librxtxSerial.jnilib"
-	RXTX_PATH="/usr/lib/java"
-	JHOME=$JPATH"/lib/ext"
+	RXTX_PATH="/Library/Java/Extensions"
+	JHOME="/Library/Java/Extensions"
+
+	echo "JHOME is $JHOME"
+	echo "RXTX_PATH is $RXTX_PATH"
 	CFLAGS=$CFLAGS" -bundle"
  	LDFLAGS=$LDFLAGS" -module -framework JavaVM -framework IOKit -framework CoreFoundation"
 	CLASSPATH=".:\$(TOP):\$(TOP)/src:\$(JPATH)/lib/ext/RXTXcomm.jar:$CLASSPATH"
