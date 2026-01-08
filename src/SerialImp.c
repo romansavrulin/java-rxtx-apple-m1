@@ -4405,7 +4405,7 @@ createSerialIterator(io_iterator_t *serialIterator)
     kern_return_t    kernResult;
     mach_port_t        masterPort;
     CFMutableDictionaryRef    classesToMatch;
-    if ((kernResult=IOMasterPort(NULL, &masterPort)) != KERN_SUCCESS)
+    if ((kernResult=IOMasterPort((mach_port_t) 0, &masterPort)) != KERN_SUCCESS)
     {
 	printf( "IOMasterPort returned %d\n", kernResult);
 	return kernResult;
