@@ -229,7 +229,7 @@ CLASSDIR = gnu.io
 CLASSTOP = gnu
 CLASSDEST = gnu/io
 ####################### tools
-LIBTOOLC = $(GLIBTOOL) --mode=compile $(CC) $(INCLUDES) $(CPPFLAGS) $(CFLAGS) $(VERBOSE_IOEXCEPTIONS) -c
+LIBTOOLC = $(GLIBTOOL) --mode=compile --tag=CC $(CC) $(INCLUDES) $(CPPFLAGS) $(CFLAGS) $(VERBOSE_IOEXCEPTIONS) -c
 LIBTOOL_INST = $(GLIBTOOL) --mode=install $(INSTALL_PROGRAM)
 ####################### dirs
 SPATH = $(abs_srcdir)/src

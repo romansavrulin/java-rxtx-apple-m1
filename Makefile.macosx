@@ -78,12 +78,12 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-build_alias = powerpc-apple-darwin1.3.7
-build_triplet = powerpc-apple-darwin1.3.7
-host_alias = powerpc-apple-darwin1.3.7
-host_triplet = powerpc-apple-darwin1.3.7
-target_alias = powerpc-apple-darwin1.3.7
-target_triplet = powerpc-apple-darwin1.3.7
+build_alias = arm-apple-darwin24.6.0
+build_triplet = arm-apple-darwin24.6.0
+host_alias = arm-apple-darwin24.6.0
+host_triplet = arm-apple-darwin24.6.0
+target_alias = arm-apple-darwin24.6.0
+target_triplet = arm-apple-darwin24.6.0
 AS = @AS@
 CATALOGS = @CATALOGS@
 CATOBJEXT = @CATOBJEXT@
@@ -109,7 +109,7 @@ JAVADOC = $(JPATH)/bin/javadoc
 JAVAH = $(JPATH)/bin/javah $(CLASSPATH) -d $(DEST) -jni
 JAVAH_FIX = 
 JAVAINCLUDE = -I $(JAVAINCLUDEDIR)
-JAVAINCLUDEDIR = /System/Library/Frameworks/JavaVM.framework/Versions/1.3.1/Home/../../../Headers
+JAVAINCLUDEDIR = /System/Library/Frameworks/JavaVM.framework/Versions/Current/Headers
 JAVANATINC = -I $(JAVAINCLUDEDIR)/./
 JAVA_CLASS_PATH = 
 JAVA_CLASS_VERSION = 
@@ -155,7 +155,7 @@ CLASSDIR = gnu.io
 CLASSTOP = gnu
 CLASSDEST = gnu/io
 ####################### tools
-LIBTOOLC = $(TOP)/libtool --mode=compile $(CC) $(INCLUDES) $(CPPFLAGS) $(CFLAGS) $(VERBOSE_IOEXCEPTIONS) -c
+LIBTOOLC = $(TOP)/libtool --mode=compile --tag=CC $(CC) $(INCLUDES) $(CPPFLAGS) $(CFLAGS) $(VERBOSE_IOEXCEPTIONS) -c
 LIBTOOL_INST = $(TOP)/libtool --mode=install $(INSTALL_PROGRAM)
 LINK = $(TOP)/libtool --mode=link $(CC) $(CFLAGS) $(LDFLAGS) -version-info 1:0:1
 ####################### dirs

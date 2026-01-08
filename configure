@@ -21489,7 +21489,7 @@ fix_comm_jar()
 }
  case $OS_NAME in
 	Mac\ OS\ X)
-        JAVAINCLUDEDIR=$JPATH/../../../Headers
+        JAVAINCLUDEDIR=$JPATH/include
         ;;
 	*)
         JAVAINCLUDEDIR=$JPATH/include
