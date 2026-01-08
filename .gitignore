@@ -1,0 +1,10 @@
+.DS_Store
+Makefile
+RXTXcomm.jar
+aarch64-apple-darwin24.6.0/
+config.h
+config.log
+config.status
+gnu/
+libtool
+stamp-h1
