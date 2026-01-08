@@ -52,6 +52,13 @@ if test "$DIE" -eq 1; then
     exit 1
 fi
 
+LIBTOOLIZE=libtoolize
+
+case `uname` in Darwin*) LIBTOOLIZE=glibtoolize ;;
+esac
+
+#echo $LIBTOOLIZE
+
 #if test -z "$*"; then
 #    echo "**Warning**: I am going to run "\`configure\'" with no arguments."
 #    echo "If you wish to pass any to it, please specify them on the"
@@ -59,7 +66,7 @@ fi
 #    echo
 #fi
 
-for j in `find $srcdir -name configure.in -print`
+for j in `find $srcdir -name configure.ac -print`
 do 
     i=`dirname $j`
     if test -f $i/NO-AUTO-GEN; then
@@ -75,7 +82,7 @@ do
     	    if test -d $k; then aclocalinclude="$aclocalinclude -I $k"; \
     	    else echo "**Warning**: No such directory \`$k'.  Ignored."; fi; \
     	done; \
-    	libtoolize --copy --force; \
+    	$LIBTOOLIZE --copy --force; \
     	aclocal $aclocalinclude; \
     	autoheader; automake --add-missing --gnu; autoheader; autoconf)
     fi

@@ -16,16 +16,18 @@
 #   License along with this library; if not, write to the Free
 #   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #-------------------------------------------------------------------------
-AC_INIT(src/SerialImp.c)
-AM_CONFIG_HEADER(config.h)
-AC_CANONICAL_SYSTEM
+AC_INIT([Serial],[2.1-7])
+AC_CONFIG_MACRO_DIRS([m4])
+AC_CONFIG_SRCDIR([src/SerialImp.c])
+AC_CONFIG_HEADERS(config.h)
+AC_CANONICAL_TARGET
 AC_MSG_WARN(Trying libtool.  If the following fails install libtool)
 AC_PROG_CC
 # Comment these two lines out when compiling on SCO
 AC_DISABLE_STATIC
-AM_PROG_LIBTOOL
+LT_INIT
 # end of SCO fixes
-AM_INIT_AUTOMAKE(Serial,2.1-7)
+AM_INIT_AUTOMAKE
 AC_CHECK_HEADERS(fcntl.h)
 AC_CHECK_HEADERS(sys/fcntl.h)
 AC_CHECK_HEADERS(sys/file.h)
@@ -35,7 +37,6 @@ AC_CHECK_HEADERS(signal.h)
 AC_CHECK_HEADERS(termios.h)
 AC_CHECK_HEADERS(grp.h)
 AC_CHECK_HEADERS(pwd.h)
-AC_PROG_GCC_TRADITIONAL
 AC_SUBST(WINDOWS_JAVA_INCLUDE)
 AC_SUBST(JAVAINCLUDEDIR)
 AC_SUBST(JAVAINCLUDE)
@@ -816,7 +817,8 @@ QNX)
 ;;
 esac ]
 
-AC_OUTPUT(Makefile)
+AC_CONFIG_FILES([Makefile])
+AC_OUTPUT
 
 
 

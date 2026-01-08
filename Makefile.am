@@ -20,6 +20,7 @@ srcdir = @srcdir@
 abs_srcdir=$(TOP)/@srcdir@
 VPATH = @srcdir@
 
+ACLOCAL_AMFLAGS= -I m4
 AUTOMAKE_OPTIONS = foreign
 INCLUDES= -I$(TOP) -I$(DEST) -I. $(JAVAINCLUDE) $(JAVANATINC)
 ####################### vars for rxtx-1.4->1.5 transition
@@ -38,7 +39,8 @@ CLASSES = $(patsubst $(SPATH)/%.java,$(TOP)/$(CLASSDEST)/%.class,$(wildcard $(SP
 javafiles = $(wildcard $(SPATH)/*.java)
 javahfiles = $(patsubst $(SPATH)/%.java,%,$(wildcard $(SPATH)/*.java))
 #######################
-CLEANFILES = $(TOP)/*.class $(TOP)/$(CLASSDEST)/*.class $(TOP)/$(JARTARGET)
+CLEANFILES = $(TOP)/*.class $(TOP)/$(CLASSDEST)/*.class $(TOP)/$(JARTARGET) $(TOP)/Makefile.in \
+	$(TOP)/aclocal.m4 $(TOP)/config.h.in $(TOP)/configure $(TOP)/compile $(TOP)/ltmain.sh
 
 # for SCO builds everything else is currently using lib%.la below
 # I'm thinking about taking libtool out completely.  See also Mac OS X builds.
@@ -91,6 +93,8 @@ install: all
 
 clean-generic:
 	rm -rf $(DEST) $(TOP)/$(CLASSTOP)
+	rm -rf $(TOP)/autom4te.cache
+	rm -rf $(TOP)/m4
 	-test -z "$(CLEANFILES)" || rm -f $(CLEANFILES)
 
 all: $(TARGETLIB)
