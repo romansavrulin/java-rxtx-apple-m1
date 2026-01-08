@@ -41,6 +41,8 @@ javahfiles = $(patsubst $(SPATH)/%.java,%,$(wildcard $(SPATH)/*.java))
 #######################
 CLEANFILES = $(TOP)/*.class $(TOP)/$(CLASSDEST)/*.class $(TOP)/$(JARTARGET)
 
+.PHONY: clean install uninstall distclean
+
 # for SCO builds everything else is currently using lib%.la below
 # I'm thinking about taking libtool out completely.  See also Mac OS X builds.
 $(target_triplet)/lib%.so: $(SPATH)/%Imp.@EXTENSION@ $(CLASSES)
@@ -98,15 +100,25 @@ clean-generic:
 	rm -rf $(DEST) $(TOP)/$(CLASSTOP)
 	-test -z "$(CLEANFILES)" || rm -f $(CLEANFILES)
 
-distclean:
+distclean: clean
 	rm -rf $(TOP)/autom4te.cache
 	rm -rf $(TOP)/m4
-	rm -rf $(TOP)/Makefile.in
-	rm -rf $(TOP)/aclocal.m4
-	rm -rf $(TOP)/config.h.in
-	rm -rf $(TOP)/configure
-	rm -rf $(TOP)/compile
-	rm -rf $(TOP)/ltmain.sh
+	rm -f $(TOP)/Makefile.in
+	rm -f $(TOP)/Makefile
+	rm -f $(TOP)/stamp-h.in
+	rm -f $(TOP)/stamp-h1
+	rm -f $(TOP)/aclocal.m4
+	rm -f $(TOP)/config.h.in
+	rm -f $(TOP)/config.h
+	rm -f $(TOP)/config.log
+	rm -f $(TOP)/config.sub
+	rm -f $(TOP)/config.status
+	rm -f $(TOP)/config.guess
+	rm -f $(TOP)/configure
+	rm -f $(TOP)/compile
+	rm -f $(TOP)/ltmain.sh
+	rm -f $(TOP)/missing
+	rm -f $(TOP)/libtool
 
 all: $(TARGETLIB)
 
