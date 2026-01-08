@@ -30,6 +30,16 @@ To make this code buildable and work fine on modern OS X I had to patch `SerialI
    sudo make install
    ```
 
+#### Uninstalling from sources
+1. Ensure your project is configured
+   ```bash
+   ./autogen.sh
+   ./configure
+   ```
+2. Uninstall
+   ```bash
+   sudo make uninstall
+   ```
 #### Installing prebuilt binaries
 
 Pre-compiled RXTX native library binaries are located on releases page (Native rxtx-2.1-7 library + patch)
