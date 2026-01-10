@@ -13,8 +13,8 @@ To make this code buildable and work fine on modern OS X I had to patch `SerialI
 #### Installing from source
 1. Checkout
    ```bash
-   git clone git@github.com:romansavrulin/java-rxtx-apple-m1.git
-   cd java-rxtx-apple-m1
+   git clone git@github.com:romansavrulin/java-rxtx-apple-silicon.git
+   cd java-rxtx-apple-silicon
    ```
 2. Run configuration and resolve possible issues with dependency (i had none on Sequoia 15.7.3 (24G419))
    ```bash
